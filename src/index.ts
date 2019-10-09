@@ -1,19 +1,19 @@
-import { RequestOptions } from './types'
+import { AxiosRequestConfig } from './types'
 import { buildURL } from './helpers/url'
 import xhr from './xhr'
 
-function AsyncRequest(config: RequestOptions): void {
+function axios(config: AxiosRequestConfig): void {
   processConfig(config)
   xhr(config)
 }
 
-function processConfig(config: RequestOptions): void {
+function processConfig(config: AxiosRequestConfig): void {
   config.url = transformUrl(config)
 }
 
-function transformUrl(config: RequestOptions): string {
+function transformUrl(config: AxiosRequestConfig): string {
   const { url, params } = config
   return buildURL(url, params)
 }
 
-export default AsyncRequest
+export default axios
